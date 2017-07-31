@@ -1,0 +1,81 @@
+Xcursor.size: 16
+
+
+*cursorColor:           #e6e6e6
+*pointerColorBackground:#2e2e34
+*pointerColorForeground:#e6e6e6
+
+! Black + DarkGrey
+*color0:  #2e2e34
+*color8:  #222226
+
+! DarkRed + Red
+*color1:  #1d4f68
+*color9:  #123040
+
+! DarkGreen + Green
+*color2:  #3d7680
+*color10: #25474d
+
+! DarkYellow + Yellow
+*color3:  #52aaac
+*color11: #3a7778
+
+! DarkBlue + Blue
+*color4:  #56b3a2
+*color12: #49998a
+
+! DarkMagenta + Magenta
+*color5:  #e54f48
+*color13: #b33d37
+
+! DarkCyan + Cyan
+*color6:  #eb6255
+*color14: #bf4f45
+
+! LightGrey + White
+*color7:  #e6e6e6
+*color15: #c2c2c2
+
+URxvt.cursorBlink: 1
+
+URxvt.url-launcher: usr/bin/chromium
+URxvt.font: xft:lucy tewi:size=9
+URxvt.boldFont: xft:lucy tewi :size=9
+URxvt.shading: 30
+URxvt.scrollBar: false
+URxvt.internalBorder: 30
+URxvt.cursorUnderline : true
+URxvt.geometry : 60x20
+URxvt.thickness : 5
+URxvt.background: 		      		  #222226
+URxvt.foreground:		      		  #e6e6e6
+
+
+! ------------------------------------------------------------------------------
+! ROFI Color theme
+! ------------------------------------------------------------------------------
+rofi.color-enabled: true
+
+
+rofi.color-window: #222226, #52aaac, #222226
+rofi.color-normal: #222226, #e6e6e6, #222226, #e6e6e6, #222226
+rofi.color-active: #222226, #e6e6e6, #222226, #e6e6e6, #222226
+rofi.color-urgent: #222226, #e54f48, #222226, #e54f48, #e6e6e6
+
+rofi.fake-transparency: true
+rofi.font: lucy tewi 9
+rofi.columns: 1
+rofi.separator-style: none
+rofi.hide-scrollbar: true
+rofi.location: 0
+rofi.padding: 12
+rofi.fullscreen: false
+rofi.width: 350
+rofi.lines: 6
+
+Xft.dpi:        96
+Xft.antialias:  true
+Xft.rgba:       rgb
+Xft.hinting:    true
+Xft.hintstyle:  full
