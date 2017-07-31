@@ -64,7 +64,7 @@ module-margin-right = 1
 module-margin-left = 1
 
 #modules-right = cpu memory temperature filesystem wlan backlight volume battery date
-modules-right = backlight volume battery eth wlan memory filesystem
+modules-right = volume battery eth wlan memory 
 modules-center = date
 modules-left = i3
 
@@ -168,7 +168,7 @@ ramp-volume-2 = 
 
 [module/battery]
 type = internal/battery
-battery = BAT0
+battery = BAT1
 adapter = AC
 full-at = 96
 interval = 10
