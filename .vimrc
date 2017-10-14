@@ -69,6 +69,8 @@ autocmd vimenter * NERDTree
 set runtimepath^=~/.vim/plugged
 set nu
 set hlsearch
+
+" NERDTree Settings
 let NERDTreeShowHidden=1
 nmap <leader>n :NERDTreeToggle<CR>
 
