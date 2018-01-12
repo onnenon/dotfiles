@@ -100,6 +100,7 @@ set hlsearch
 let NERDTreeShowHidden=1
 nmap <leader>n :NERDTreeToggle<CR>
 
+" Spell check stuff
 set termguicolors
 set ft=markdown
 set spell
