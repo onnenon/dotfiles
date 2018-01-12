@@ -21,6 +21,15 @@ nnoremap <C-H> <C-W><C-H>
 " Enable folding with the spacebar
 nnoremap <space> za
 
+au Filetype C
+    \ set tabstop=4 |
+    \ set softtabstop=4 |
+    \ set shiftwidth=4 |
+    \ set textwidth=79 |
+    \ set expandtab |
+    \ set autoindent |
+    \ set fileformat=unix |
+
 au Filetype python
     \ set tabstop=4 |
     \ set softtabstop=4 |
@@ -31,6 +40,18 @@ au Filetype python
     \ set fileformat=unix |
 
 au Filetype yaml
+    \ set tabstop=2 |
+    \ set softtabstop=2 |
+    \ set shiftwidth=2 |
+    \ set expandtab |
+
+au Filetype sls
+    \ set tabstop=2 |
+    \ set softtabstop=2 |
+    \ set shiftwidth=2 |
+    \ set expandtab |
+
+au Filetype yml
     \ set tabstop=2 |
     \ set softtabstop=2 |
     \ set shiftwidth=2 |
@@ -69,7 +90,6 @@ set showtabline=2 " Always display the tabline, even if there is only one tab
 set noshowmode " Hide the default mode text (e.g. -- INSERT -- below the statusline)
 set t_Co=256
 set background=dark
-
 autocmd vimenter * NERDTree
 
 set runtimepath^=~/.vim/plugged
@@ -80,3 +100,9 @@ set hlsearch
 let NERDTreeShowHidden=1
 nmap <leader>n :NERDTreeToggle<CR>
 
+set termguicolors
+set ft=markdown
+set spell
+set spelllang=en_us
+let g:gruvbox_guisp_fallback='fg'
+colo gruvbox
