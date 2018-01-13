@@ -1,4 +1,4 @@
 #!/bin/bash/
-ln -sf .vimrc /home/sonnen/.vimrc
-ln -sf .bashrc /home/sonnen/.bashrc
+ln -sf /home/sonnen/dotfiles/.vimrc .
+ln -sf /home/sonnen/dotfiles/.bashrc .
 
