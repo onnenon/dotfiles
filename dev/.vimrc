@@ -2,6 +2,7 @@ call plug#begin()
 Plug 'tpope/vim-fugitive'
 Plug 'scrooloose/syntastic'
 Plug 'scrooloose/nerdtree'
+Plug 'valloric/youcompleteme'
 Plug 'tmhedberg/SimpylFold'
 Plug 'morhetz/gruvbox'
 Plug 'vim-scripts/indentpython.vim'
@@ -100,6 +101,7 @@ let NERDTreeShowHidden=1
 nmap <leader>n :NERDTreeToggle<CR>
 
 " Spell check stuff
+set termguicolors
 set ft=markdown
 set spell
 set spelllang=en_us
