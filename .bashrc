@@ -23,9 +23,9 @@ fi
 
 # Prompt
 if [ -n "$SSH_CONNECTION" ]; then
-export PS1="\[$(tput setaf 10)\]┌─╼ \[$(tput setaf 8)\][\@]\[$(tput setaf 15)\] -\[$(tput setaf 3)\] \u\[$(tput setaf 15)\]@\h [\[$(tput setaf 8)\]\w\[$(tput setaf 15)\]]\n\[$(tput setaf 10)\]\$(if [[ \$? == 0 ]]; then echo \"\[$(tput setaf 10)\]└────╼\[$(tput setaf 12)\]<<[ssh]>>\"; else echo \"\[$(tput setaf 10)\]└╼ \[$(tput setaf 12)\]<<[ssh]>>\"; fi) \[$(tput setaf 7)\]"
+export PS1="\[$(tput setaf 10)\]┌─╼ \[$(tput setaf 8)\][\@]\[$(tput setaf 15)\] -\[$(tput setaf 3)\] \u\[$(tput setaf 15)\]@\h [\[$(tput setaf 8)\]\w\[$(tput setaf 15)\]]\n\[$(tput setaf 10)\]\$(if [[ \$? == 0 ]]; then echo \"\[$(tput setaf 10)\]└────╼\[$(tput setaf 12)\] <<\[$(tput setaf 15)\][ssh]\[$(tput setaf 15)\]>>\"; else echo \"\[$(tput setaf 10)\]└╼ \[$(tput setaf 12)\]<<\[$(tput setaf 15)\][ssh]\[$(tput setaf 15)\]>>\"; fi) \[$(tput setaf 7)\]"
 else
-export PS1="\[$(tput setaf 10)\]┌─╼ \[$(tput setaf 8)\][\@]\[$(tput setaf 15)\] -\[$(tput setaf 3)\] \u\[$(tput setaf 15)\]@\h [\[$(tput setaf 8)\]\w\[$(tput setaf 15)\]]\n\[$(tput setaf 10)\]\$(if [[ \$? == 0 ]]; then echo \"\[$(tput setaf 10)\]└────╼\[$(tput setaf 12)\] >>\"; else echo \"\[$(tput setaf 10)\]└╼\"; fi) \[$(tput setaf 7)\]"
+export PS1="\[$(tput setaf 10)\]┌─╼ \[$(tput setaf 8)\][\@]\[$(tput setaf 15)\] -\[$(tput setaf 3)\] \u\[$(tput setaf 15)\]@\h [\[$(tput setaf 8)\]\w\[$(tput setaf 15)\]]\n\[$(tput setaf 10)\]\$(if [[ \$? == 0 ]]; then echo \"\[$(tput setaf 10)\]└────╼\[$(tput setaf 12)\] >>\"; else echo \"\[$(tput setaf 10)\]└╼ \[$(tput setaf 12)\]>>\"; fi) \[$(tput setaf 7)\]"
 fi
 
 trap 'echo -ne "\e[0m"' DEBUG
