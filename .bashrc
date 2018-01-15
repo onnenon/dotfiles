@@ -21,11 +21,20 @@ if [ -n "$force_color_prompt" ]; then
     fi
 fi
 
-# Prompt
+
+# Git Branch Info
+function parse_git_branch () {
+  git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'
+}
+
+##### Prompt #####
+# SSH Prompt
 if [ -n "$SSH_CONNECTION" ]; then
-export PS1="\[$(tput setaf 10)\]┌─╼ \[$(tput setaf 8)\][\@]\[$(tput setaf 15)\] -\[$(tput setaf 3)\] \u\[$(tput setaf 15)\]@\h [\[$(tput setaf 8)\]\w\[$(tput setaf 15)\]]\n\[$(tput setaf 10)\]\$(if [[ \$? == 0 ]]; then echo \"\[$(tput setaf 10)\]└────╼\[$(tput setaf 12)\] <<\[$(tput setaf 15)\][ssh]\[$(tput setaf 12)\]>>\"; else echo \"\[$(tput setaf 10)\]└╼ \[$(tput setaf 12)\]<<\[$(tput setaf 15)\][ssh]\[$(tput setaf 12)\]>>\"; fi) \[$(tput setaf 7)\]"
+export PS1="\[$(tput setaf 10)\]┌─╼ \[$(tput setaf 8)\][\@]\[$(tput setaf 15)\] -\[$(tput setaf 3)\] \u\[$(tput setaf 15)\]@\h [\[$(tput setaf 8)\]\w\[$(tput setaf 15)\]]\n\[$(tput setaf 10)\]\$(if [[ \$? == 0 ]]; then echo \"\[$(tput setaf 10)\]└────╼\[$(tput setaf 9)\] \$(parse_git_branch)\[$(tput setaf 12)\] <<\[$(tput setaf 15)\][ssh]\[$(tput setaf 12)\]>>\"; else echo \"\[$(tput setaf 10)\]└╼\[$(tput setaf 9)\] \$(parse_git_branch)\[$(tput setaf 12)\] <<\[$(tput setaf 15)\][ssh]\[$(tput setaf 12)\]>>\"; fi) \[$(tput setaf 7)\]"
+
 else
-export PS1="\[$(tput setaf 10)\]┌─╼ \[$(tput setaf 8)\][\@]\[$(tput setaf 15)\] -\[$(tput setaf 3)\] \u\[$(tput setaf 15)\]@\h [\[$(tput setaf 8)\]\w\[$(tput setaf 15)\]]\n\[$(tput setaf 10)\]\$(if [[ \$? == 0 ]]; then echo \"\[$(tput setaf 10)\]└────╼\[$(tput setaf 12)\] >>\"; else echo \"\[$(tput setaf 10)\]└╼ \[$(tput setaf 12)\]>>\"; fi) \[$(tput setaf 7)\]"
+# Normal Prompt
+export PS1="\[$(tput setaf 10)\]┌─╼ \[$(tput setaf 8)\][\@]\[$(tput setaf 15)\] -\[$(tput setaf 3)\] \u\[$(tput setaf 15)\]@\h [\[$(tput setaf 8)\]\w\[$(tput setaf 15)\]]\n\[$(tput setaf 10)\]\$(if [[ \$? == 0 ]]; then echo \"\[$(tput setaf 10)\]└────╼\[$(tput setaf 9)\] \$(parse_git_branch)\[$(tput setaf 12)\] >>\"; else echo \"\[$(tput setaf 10)\]└╼\[$(tput setaf 9)\] \$(parse_git_branch) \[$(tput setaf 12)\]>>\"; fi) \[$(tput setaf 7)\]"
 fi
 
 trap 'echo -ne "\e[0m"' DEBUG
@@ -36,7 +45,10 @@ if [ -x /usr/bin/dircolors ]; then
     alias ls='ls --color=auto'
 fi
 
+# Change to central time zone 
+export TZ="/usr/share/zoneinfo/America/Chicago"
 
+# Powerline Info
 #if [ -f `which powerline-daemon` ]; then
 #  powerline-daemon -q
 #  POWERLINE_BASH_CONTINUATION=1
