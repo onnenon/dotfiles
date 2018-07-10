@@ -27,6 +27,8 @@ function parse_git_branch () {
   git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'
 }
 
+
+if [[ $- == *i* ]]; then
 ##### Prompt #####
 # SSH Prompt
 if [ -n "$SSH_CONNECTION" ]; then
@@ -35,6 +37,8 @@ export PS1="\[$(tput setaf 10)\]┌─╼ \[$(tput setaf 3)\][\@]\[$(tput setaf 
 else
 # Normal Prompt
 export PS1="\[$(tput setaf 10)\]┌─╼ \[$(tput setaf 3)\][\@]\[$(tput setaf 15)\] -\[$(tput setaf 5)\] \u\[$(tput setaf 6)\]@\h [\[$(tput setaf 15)\]\w\[$(tput setaf 6)\]]\n\[$(tput setaf 10)\]\$(if [[ \$? == 0 ]]; then echo \"\[$(tput setaf 10)\]└────╼\[$(tput setaf 9)\] \$(type -t parse_git_branch >/dev/null && parse_git_branch)\[$(tput setaf 12)\] >>\"; else echo \"\[$(tput setaf 10)\]└╼\[$(tput setaf 9)\] \$(type -t parse_git_branch >/dev/null && parse_git_branch) \[$(tput setaf 12)\]>>\"; fi) \[$(tput setaf 7)\]"
+fi
+
 fi
 
 trap 'echo -ne "\e[0m"' DEBUG
