@@ -1,14 +1,3 @@
-call plug#begin()
-Plug 'tpope/vim-fugitive'
-Plug 'scrooloose/syntastic'
-Plug 'scrooloose/nerdtree'
-Plug 'valloric/youcompleteme'
-Plug 'tmhedberg/SimpylFold'
-Plug 'morhetz/gruvbox'
-Plug 'vim-scripts/indentpython.vim'
-Plug 'tpope/vim-surround'
-call plug#end()
-
 :imap jk <Esc>
 
 let mapleader=","
@@ -81,29 +70,3 @@ syntax on
 set foldmethod=indent
 set foldlevel=99
 
-colorscheme gruvbox
-python3 from powerline.vim import setup as powerline_setup
-python3 powerline_setup()
-python3 del powerline_setup
-set laststatus=2 " Always display the statusline in all windows
-set showtabline=2 " Always display the tabline, even if there is only one tab
-set noshowmode " Hide the default mode text (e.g. -- INSERT -- below the statusline)
-set t_Co=256
-set background=dark
-autocmd vimenter * NERDTree
-
-set runtimepath^=~/.vim/plugged
-set nu
-set hlsearch
-
-" NERDTree Settings
-let NERDTreeShowHidden=1
-nmap <leader>n :NERDTreeToggle<CR>
-
-" Spell check stuff
-set termguicolors
-set ft=markdown
-set spell
-set spelllang=en_us
-let g:gruvbox_guisp_fallback='fg'
-colo gruvbox
