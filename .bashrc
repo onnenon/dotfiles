@@ -52,10 +52,8 @@ fi
 # Change to central time zone 
 export TZ="/usr/share/zoneinfo/America/Chicago"
 
-# Powerline Info
-#if [ -f `which powerline-daemon` ]; then
-#  powerline-daemon -q
-#  POWERLINE_BASH_CONTINUATION=1
-#  POWERLINE_BASH_SELECT=1
-#  . /usr/lib/python2.7/site-packages/powerline/bindings/bash/powerline.sh
-#fi
+
+# Aliases
+
+alias gotop="go run github.com/cjbassi/gotop"
+
