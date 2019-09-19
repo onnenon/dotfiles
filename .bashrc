@@ -57,7 +57,7 @@ fi
 fi
 
 # Alias for colored ls outout.
-alias ls='ls -GF'
+alias ls='ls -GF --group-directories-first --color'
 # alias ls='gls -F --color -h --group-directories-first'
 
 [[ -r "/usr/local/etc/profile.d/bash_completion.sh" ]] && . "/usr/local/etc/profile.d/bash_completion.sh"
