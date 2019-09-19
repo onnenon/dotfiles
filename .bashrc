@@ -11,7 +11,7 @@ fi
 # User specific aliases and functions
 
 # Colored prompt
-force_color_prompt=yes
+# force_color_prompt=yes
 
 if [ -n "$force_color_prompt" ]; then
     if [ -x /usr/bin/tput ] && tput setaf 1 >&/dev/null; then
@@ -24,38 +24,43 @@ fi
 
 # Git Branch Info
 function parse_git_branch () {
-  git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'
+  git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/'
 }
 
 
 if [[ $- == *i* ]]; then
+# Colors
+# Dark colors 0 - 7
+# Light Colors 8 - 15
+BLACK=$(tput setaf 0)
+RED=$(tput setaf 1)
+GREEN=$(tput setaf 2)
+YELLOW=$(tput setaf 3)
+BLUE=$(tput setaf 4)
+MAGENTA=$(tput setaf 5)
+CYAN=$(tput setaf 6)
+WHITE=$(tput setaf 7)
 ##### Prompt #####
 # SSH Prompt
 if [ -n "$SSH_CONNECTION" ]; then
-export PS1="\[$(tput setaf 10)\]┌─╼ \[$(tput setaf 3)\][\@]\[$(tput setaf 15)\] -\[$(tput setaf 5)\] \u\[$(tput setaf 6)\]@\h [\[$(tput setaf 15)\]\w\[$(tput setaf 6)\]]\n\[$(tput setaf 10)\]\$(if [[ \$? == 0 ]]; then echo \"\[$(tput setaf 10)\]└────╼\[$(tput setaf 9)\] \$(type -t parse_git_branch >/dev/null && parse_git_branch)\[$(tput setaf 5)\] **\[$(tput setaf 15)\][ssh]\[$(tput setaf 5)\]**\"; else echo \"\[$(tput setaf 10)\]└╼\[$(tput setaf 9)\] \$(type -t parse_git_branch >/dev/null && parse_git_branch)\[$(tput setaf 5)\] **\[$(tput setaf 15)\][ssh]\[$(tput setaf 5)\]**\"; fi) \[$(tput setaf 7)\]"
-
+export PS1="\[$YELLOW\][\@]\[$WHITE\] -\[$MAGENTA\] \u\[$CYAN\]@sourceallies [\[$WHITE\]\w\[$CYAN\]]
+\$(if [[ \$? == 0 ]]; then echo \"\[$GREEN\]\$\
+(parse_git_branch)\[$MAGENTA\] **\[$WHITE\][ssh]\[$MAGENTA\]**\"; else echo \"\[$GREEN\] \$\
+(parse_git_branch)\[$MAGENTA\] **\[$WHITE\][ssh]\[$MAGENTA\]**\"; fi) \[$WHITE\]"
 else
 # Normal Prompt
-export PS1="\[$(tput setaf 10)\]┌─╼ \[$(tput setaf 3)\][\@]\[$(tput setaf 15)\] -\[$(tput setaf 5)\] \u\[$(tput setaf 6)\]@\h [\[$(tput setaf 15)\]\w\[$(tput setaf 6)\]]\n\[$(tput setaf 10)\]\$(if [[ \$? == 0 ]]; then echo \"\[$(tput setaf 10)\]└────╼\[$(tput setaf 9)\] \$(type -t parse_git_branch >/dev/null && parse_git_branch)\[$(tput setaf 12)\] >>\"; else echo \"\[$(tput setaf 10)\]└╼\[$(tput setaf 9)\] \$(type -t parse_git_branch >/dev/null && parse_git_branch) \[$(tput setaf 12)\]>>\"; fi) \[$(tput setaf 7)\]"
+export PS1="\[$YELLOW\][\@]\[$WHITE\] -\[$MAGENTA\] \u\[$CYAN\]@sourceallies [\[$WHITE\]\w\[$CYAN\]]
+\$(if [[ \$? == 0 ]]; then echo \"\[$RED\]\$\
+(parse_git_branch) \[$GREEN\]>>\"; else echo \"\[$RED\]\$\
+(parse_git_branch) \[$GREEN\]>>\"; fi) \[$WHITE\]"
+fi
 fi
 
-fi
+# Alias for colored ls outout.
+alias ls='ls -GF'
+# alias ls='gls -F --color -h --group-directories-first'
 
-trap 'echo -ne "\e[0m"' DEBUG
+[[ -r "/usr/local/etc/profile.d/bash_completion.sh" ]] && . "/usr/local/etc/profile.d/bash_completion.sh"
+set -o vi
 
-# Color support
-if [ -x /usr/bin/dircolors ]; then
-    test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
-    alias ls='ls --color=auto'
-fi
-
-# Change to central time zone 
-export TZ="/usr/share/zoneinfo/America/Chicago"
-
-# Powerline Info
-#if [ -f `which powerline-daemon` ]; then
-#  powerline-daemon -q
-#  POWERLINE_BASH_CONTINUATION=1
-#  POWERLINE_BASH_SELECT=1
-#  . /usr/lib/python2.7/site-packages/powerline/bindings/bash/powerline.sh
-#fi
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
