@@ -43,13 +43,13 @@ WHITE=$(tput setaf 7)
 ##### Prompt #####
 # SSH Prompt
 if [ -n "$SSH_CONNECTION" ]; then
-export PS1="\[$YELLOW\][\@]\[$WHITE\] -\[$MAGENTA\] \u\[$CYAN\]\h[\[$WHITE\]\w\[$CYAN\]]
+export PS1="\[$YELLOW\][\@]\[$WHITE\] -\[$MAGENTA\] \u\[$CYAN\]@\H[\[$WHITE\]\w\[$CYAN\]]
 \$(if [[ \$? == 0 ]]; then echo \"\[$GREEN\]\$\
 (parse_git_branch)\[$MAGENTA\] **\[$WHITE\][ssh]\[$MAGENTA\]**\"; else echo \"\[$GREEN\] \$\
 (parse_git_branch)\[$MAGENTA\] **\[$WHITE\][ssh]\[$MAGENTA\]**\"; fi) \[$WHITE\]"
 else
 # Normal Prompt
-export PS1="\[$YELLOW\][\@]\[$WHITE\] -\[$MAGENTA\] \u\[$CYAN\]\h[\[$WHITE\]\w\[$CYAN\]]
+export PS1="\[$YELLOW\][\@]\[$WHITE\] -\[$MAGENTA\] \u\[$CYAN\]@\H[\[$WHITE\]\w\[$CYAN\]]
 \$(if [[ \$? == 0 ]]; then echo \"\[$RED\]\$\
 (parse_git_branch) \[$GREEN\]>>\"; else echo \"\[$RED\]\$\
 (parse_git_branch) \[$GREEN\]>>\"; fi) \[$WHITE\]"
